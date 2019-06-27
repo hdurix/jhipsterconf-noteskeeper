@@ -1,0 +1,29 @@
+{
+    "name": "Note",
+    "fields": [
+        {
+            "fieldName": "label",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dueDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190627153827",
+    "entityTableName": "note",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": [
+        "jhipster"
+    ]
+}

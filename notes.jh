@@ -1,0 +1,18 @@
+/**
+ * The application configuration.
+ * @author A true hipster
+ */
+application {
+    config {
+        testFrameworks [protractor]
+        clientFramework vuejs
+        enableTranslation false
+    }
+    entities *
+}
+
+entity Note {
+    label String
+    description String
+    dueDate LocalDate
+}
