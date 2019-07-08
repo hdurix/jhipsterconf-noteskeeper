@@ -175,6 +175,19 @@ describe('Note e2e test', () => {
     expect(await noteComponentsPage.countNote()).to.eq(nbNoteBeforeDelete - 1);
   });
 
+  it('should duplicate last Note', async () => {
+    // GIVEN
+    await noteComponentsPage.waitUntilLoaded();
+    const nbNoteBeforeDuplicate = await noteComponentsPage.countNote();
+
+    // WHEN
+    await noteComponentsPage.clickOnLastDuplicateButton();
+
+    // THEN
+    await noteComponentsPage.waitUntilNoteCountIs(nbNoteBeforeDuplicate + 1);
+    expect(await noteComponentsPage.countNote()).to.eq(nbNoteBeforeDuplicate + 1);
+  });
+
   after(async () => {
     await navBarPage.autoSignOut();
   });

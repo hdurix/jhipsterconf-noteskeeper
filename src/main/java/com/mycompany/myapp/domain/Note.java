@@ -104,4 +104,8 @@ public class Note implements Serializable {
             ", dueDate='" + getDueDate() + "'" +
             "}";
     }
+
+    public Note duplicate() {
+        return new Note().label(this.label).description(this.description).dueDate(this.dueDate);
+    }
 }

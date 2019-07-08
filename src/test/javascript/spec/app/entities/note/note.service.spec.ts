@@ -113,6 +113,17 @@ describe('Service Tests', () => {
           expect(res.ok).toBeTruthy();
         });
       });
+
+      it('should duplicate a Note', async () => {
+        // GIVEN
+        mockedAxios.post.mockReturnValue(Promise.resolve({ ok: true }));
+
+        // WHEN
+        return service.duplicate(123).then(res => {
+          // THEN
+          expect(res.ok).toBeTruthy();
+        });
+      });
     });
   });
 });

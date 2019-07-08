@@ -114,4 +114,13 @@ public class NoteResource {
         noteRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString())).build();
     }
+
+    @PostMapping("/notes/{id}/duplicate")
+    public ResponseEntity<Void> duplicateNote(@PathVariable Long id) {
+        log.debug("REST request to duplicate Note : {}", id);
+        this.noteRepository.findById(id)
+            .map(Note::duplicate)
+            .ifPresent(noteRepository::save);
+        return ResponseEntity.noContent().build();
+    }
 }

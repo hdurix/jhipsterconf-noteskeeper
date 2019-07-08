@@ -259,6 +259,24 @@ public class NoteResourceIT {
 
     @Test
     @Transactional
+    public void duplicateNote() throws Exception {
+        // Initialize the database
+        noteRepository.saveAndFlush(note);
+
+        int databaseSizeBeforeDuplicate = noteRepository.findAll().size();
+
+        // Delete the note
+        restNoteMockMvc.perform(post("/api/notes/{id}/duplicate", note.getId())
+            .accept(TestUtil.APPLICATION_JSON_UTF8))
+            .andExpect(status().isNoContent());
+
+        // Validate the database contains one less item
+        List<Note> noteList = noteRepository.findAll();
+        assertThat(noteList).hasSize(databaseSizeBeforeDuplicate + 1);
+    }
+
+    @Test
+    @Transactional
     public void equalsVerifier() throws Exception {
         TestUtil.equalsVerifier(Note.class);
         Note note1 = new Note();

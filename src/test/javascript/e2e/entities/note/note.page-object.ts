@@ -52,6 +52,15 @@ export default class NoteComponentsPage {
       .last()
       .click();
   }
+  getDuplicateButtons() {
+    return element.all(by.css('div table .btn-warning'));
+  }
+
+  async clickOnLastDuplicateButton() {
+    await this.getDuplicateButtons()
+      .last()
+      .click();
+  }
 
   async countNote() {
     return await element.all(by.css('div table .btn-danger')).count();

@@ -50,6 +50,12 @@
                                 <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
                                 <span class="d-none d-md-inline">Edit</span>
                             </router-link>
+                            <b-button v-on:click="duplicateNote(note)"
+                                   variant="warning"
+                                   class="btn btn-sm">
+                                <font-awesome-icon icon="plus"></font-awesome-icon>
+                                <span class="d-none d-md-inline">Duplicate</span>
+                            </b-button>
                             <b-button v-on:click="prepareRemove(note)"
                                    variant="danger"
                                    class="btn btn-sm"

@@ -78,5 +78,17 @@ describe('Component Tests', () => {
       expect(noteServiceStub.delete.called).toBeTruthy();
       expect(noteServiceStub.retrieve.callCount).toEqual(2);
     });
+
+    it('Should call duplicate service then refresh the list', async () => {
+      // GIVEN
+      noteServiceStub.duplicate.resolves({});
+
+      // WHEN
+      await comp.duplicateNote({ id: 123 });
+
+      // THEN
+      expect(noteServiceStub.duplicate.called).toBeTruthy();
+      expect(noteServiceStub.retrieve.callCount).toEqual(2);
+    });
   });
 });

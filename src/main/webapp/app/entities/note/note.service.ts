@@ -29,6 +29,14 @@ export default class NoteService {
     });
   }
 
+  public duplicate(id: number): Promise<any> {
+    return new Promise<any>(resolve => {
+      axios.post(`${baseApiUrl}/${id}/duplicate`).then(function(res) {
+        resolve(res);
+      });
+    });
+  }
+
   public create(entity: INote): Promise<INote> {
     return new Promise<INote>(resolve => {
       axios.post(`${baseApiUrl}`, entity).then(function(res) {

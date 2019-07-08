@@ -71,6 +71,12 @@ export default class Note extends Vue {
       });
   }
 
+  public duplicateNote(note: INote): Promise<any> {
+    return this.noteService()
+      .duplicate(note.id)
+      .then(() => this.retrieveAllNotes());
+  }
+
   public closeDialog(): void {
     (<any>this.$refs.removeEntity).hide();
   }
